@@ -1,1 +1,2 @@
 # fjord_react_practice
+フィヨルドブートキャンプでReactの提出物を作成するレポジトリです
