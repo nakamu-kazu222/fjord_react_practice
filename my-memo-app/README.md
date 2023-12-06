@@ -1,3 +1,10 @@
+# 概要
+Create React App を使った SPA のメモアプリです
+以下の条件を満たすように作成しています
+- React コンポーネントを 2 つ以上作成する
+- JSX を利用する
+- useStateを利用する
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
