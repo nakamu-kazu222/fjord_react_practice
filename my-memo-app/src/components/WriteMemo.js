@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const WriteMemo = ({ selectedMemo, onEdit, onRemove }) => {
+const WriteMemo = ({ selectedMemo, onAdd, onEdit, onRemove }) => {
   const [text, setText] = useState('');
 
   useEffect(() => {
@@ -15,6 +15,8 @@ const WriteMemo = ({ selectedMemo, onEdit, onRemove }) => {
     if (text.trim() !== '') {
       if (selectedMemo) {
         onEdit(selectedMemo.id, text);
+      } else{
+        onAdd(text);
       }
       setText('');
     }
