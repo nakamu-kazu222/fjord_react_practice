@@ -18,6 +18,9 @@ Create React App を使った SPA のメモアプリです
 - 保存先ストレージ
   - LocalStorageやFirebaseなど、永続化できれば自由
 
+## 実行方法
+% npm start
+
 ## 条件
 以下の条件を満たすように作成する
 - React コンポーネントを 2 つ以上作成する
