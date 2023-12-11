@@ -1,38 +1,58 @@
-.App {
+.header {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-container {
+  margin-top: 100px;
+  display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: stretch;
 }
 
-.App-link {
-  color: #61dafb;
+.add-button {
+  font-size: 1.5rem;
+  margin-left: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.left-container {
+  flex: 1;
+}
+
+.right-container {
+  text-align: right;
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+.memo-list-container {
+  text-align: left;
+  margin-right: 1rem;
+}
+
+.memo-title {
+  cursor: pointer;
+}
+
+.write-memo-container {
+  text-align: center;
+  width: 300px;
+}
+
+.memo-textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.memo-button {
+  margin-right: 0.5rem;
 }

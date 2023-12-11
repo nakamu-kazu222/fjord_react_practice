@@ -1,45 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const WriteMemo = ({ selectedMemo, onAdd, onEdit, onRemove }) => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   useEffect(() => {
     if (selectedMemo) {
       setText(selectedMemo.text);
     } else {
-      setText('');
+      setText("");
     }
   }, [selectedMemo]);
 
   const handleWrite = () => {
-    if (text.trim() !== '') {
+    if (text.trim() !== "") {
       if (selectedMemo) {
         onEdit(selectedMemo.id, text);
-      } else{
+      } else {
         onAdd(text);
+        setText("");
       }
-      setText('');
     }
   };
 
   const handleRemove = () => {
     if (selectedMemo) {
       onRemove(selectedMemo.id);
-      setText('');
+      setText("");
     }
   };
 
   return (
-    <div>
-      <h2>{selectedMemo ? 'Edit Memo' : 'Add Memo'}</h2>
+    <div className="right-container">
       <textarea
-        rows={{ minHeight: '1000px' }}
+        rows={10}
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Write memo"
+        className="memo-textarea"
       />
-      {selectedMemo && <button onClick={handleWrite}>Save</button>}
-      {selectedMemo && <button onClick={handleRemove}>Remove Memo</button>}
+      {selectedMemo && (
+        <button onClick={handleWrite} className="memo-button">
+          保存
+        </button>
+      )}
+      {selectedMemo && (
+        <button onClick={handleRemove} className="memo-button">
+          削除
+        </button>
+      )}
     </div>
   );
 };
