@@ -25,7 +25,6 @@ const WriteMemo = ({ selectedMemo, onAdd, onEdit, onRemove }) => {
   const handleRemove = () => {
     if (selectedMemo) {
       onRemove(selectedMemo.id);
-      setText("");
     }
   };
 
