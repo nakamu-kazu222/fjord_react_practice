@@ -58,7 +58,7 @@ const App = () => {
         <h2>Memo App</h2>
       </div>
       <div className="main-container">
-        <div className="left-container">
+        <div className="memo-list-container">
           <MemoList memos={memos} onEdit={handleMemoListClick} />
           <button onClick={handleNewMemo} className="add-button">
             +

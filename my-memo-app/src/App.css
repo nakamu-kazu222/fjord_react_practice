@@ -24,28 +24,14 @@
   margin-left: auto;
 }
 
-.left-container {
+.memo-list-container {
   flex: 1;
 }
 
-.right-container {
+.write-memo-container {
   text-align: right;
   margin-left: auto;
   margin-right: 30px;
-}
-
-.memo-list-container {
-  text-align: left;
-  margin-right: 1rem;
-}
-
-.memo-title {
-  cursor: pointer;
-}
-
-.write-memo-container {
-  text-align: center;
-  width: 300px;
 }
 
 .memo-textarea {

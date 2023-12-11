@@ -30,7 +30,7 @@ const WriteMemo = ({ selectedMemo, onAdd, onEdit, onRemove }) => {
   };
 
   return (
-    <div className="right-container">
+    <div className="write-memo-container">
       <textarea
         rows={10}
         value={text}
