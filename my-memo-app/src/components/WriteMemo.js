@@ -1,15 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const WriteMemo = ({ selectedMemo, onAdd, onEdit, onRemove }) => {
-  const [text, setText] = useState("");
-
-  useEffect(() => {
-    if (selectedMemo) {
-      setText(selectedMemo.text);
-    } else {
-      setText("");
-    }
-  }, [selectedMemo]);
+  const [text, setText] = useState(selectedMemo?.text || "");
 
   const handleWrite = () => {
     if (text.trim() !== "") {
