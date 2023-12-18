@@ -1,6 +1,8 @@
 import React from "react";
 
 const MemoList = ({ memos, onEdit }) => {
+  const sortedMemos = memos.sort((a, b) => a.id - b.id);
+
   const handleTitleClick = (memo) => {
     onEdit(memo);
   };
@@ -8,7 +10,7 @@ const MemoList = ({ memos, onEdit }) => {
   return (
     <div>
       <ul>
-        {memos.map((memo) => (
+        {sortedMemos.map((memo) => (
           <li key={memo.id}>
             <span
               onClick={() => handleTitleClick(memo)}
