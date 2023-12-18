@@ -5,19 +5,12 @@ const WriteMemo = ({ selectedMemo, onAdd, onEdit, onRemove }) => {
 
   const handleWrite = () => {
     if (text.trim() !== "") {
-      if (selectedMemo) {
-        onEdit(selectedMemo.id, text);
-      } else {
-        onAdd(text);
-        setText("");
-      }
+      onEdit(selectedMemo.id, text);
     }
   };
 
   const handleRemove = () => {
-    if (selectedMemo) {
-      onRemove(selectedMemo.id);
-    }
+    onRemove(selectedMemo.id);
   };
 
   return (

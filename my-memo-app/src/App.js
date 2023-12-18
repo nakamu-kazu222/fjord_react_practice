@@ -9,7 +9,6 @@ const App = () => {
   );
   const [idCounter, setIdCounter] = useState(1);
   const [selectedMemo, setSelectedMemo] = useState(null);
-  const [showWriteMemo, setShowWriteMemo] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("memos", JSON.stringify(memos));
@@ -24,7 +23,6 @@ const App = () => {
     setMemos([...memos, newMemo]);
     setIdCounter(idCounter + 1);
     setSelectedMemo(newMemo);
-    setShowWriteMemo(true);
   };
 
   const handleEditMemo = (editId, newText) => {
@@ -36,10 +34,8 @@ const App = () => {
         ...memos.filter((memo) => memo.id !== editId),
         updatedMemo,
       ];
-
       setMemos(updatedMemosArray);
       setSelectedMemo(null);
-      setShowWriteMemo(false);
     }
   };
 
@@ -47,12 +43,10 @@ const App = () => {
     const updatedMemos = memos.filter((memo) => memo.id !== removeId);
     setMemos(updatedMemos);
     setSelectedMemo(null);
-    setShowWriteMemo(false);
   };
 
   const handleMemoListClick = (clickedMemo) => {
     setSelectedMemo(clickedMemo);
-    setShowWriteMemo(true);
   };
 
   return (
@@ -68,7 +62,7 @@ const App = () => {
           </button>
         </div>
         <div>
-          {showWriteMemo && (
+          {selectedMemo && (
             <WriteMemo
               onAdd={handleNewMemo}
               selectedMemo={selectedMemo}
