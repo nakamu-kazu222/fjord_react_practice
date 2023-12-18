@@ -28,16 +28,19 @@ const App = () => {
   };
 
   const handleEditMemo = (editId, newText) => {
-    const updatedMemos = memos.map((memo) => {
-      if (memo.id === editId) {
-        return { ...memo, text: newText };
-      } else {
-        return memo;
-      }
-    });
-    setMemos(updatedMemos);
-    setSelectedMemo(null);
-    setShowWriteMemo(false);
+    const updatedMemos = memos.find((memo) => memo.id === editId);
+
+    if (updatedMemos) {
+      const updatedMemo = { ...updatedMemos, text: newText };
+      const updatedMemosArray = [
+        ...memos.filter((memo) => memo.id !== editId),
+        updatedMemo,
+      ];
+
+      setMemos(updatedMemosArray);
+      setSelectedMemo(null);
+      setShowWriteMemo(false);
+    }
   };
 
   const handleRemoveMemo = (removeId) => {
