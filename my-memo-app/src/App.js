@@ -7,7 +7,9 @@ const App = () => {
   const [memos, setMemos] = useState(
     JSON.parse(localStorage.getItem("memos")) || [],
   );
-  const [idCounter, setIdCounter] = useState(1);
+  const [idCounter, setIdCounter] = useState(
+    parseInt(localStorage.getItem("idCounter")) || 1,
+  );
   const [selectedMemo, setSelectedMemo] = useState(null);
 
   useEffect(() => {
