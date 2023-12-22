@@ -28,14 +28,11 @@ const App = () => {
   };
 
   const handleEditMemo = (editId, newText) => {
-    const editedMemo = memos.find((memo) => memo.id === editId);
-
+    const editedMemo = memos.find(({ id }) => id === editId);
     if (editedMemo) {
-      const updatedMemos = memos.map((memo) =>
-        memo.id === editId ? { ...memo, text: newText } : memo,
-      );
+      editedMemo.text = newText;
 
-      setMemos(updatedMemos);
+      setMemos([...memos]);
       setSelectedMemo(null);
     }
   };
