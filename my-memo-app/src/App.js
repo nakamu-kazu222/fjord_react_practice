@@ -11,52 +11,78 @@ const App = () => {
     parseInt(localStorage.getItem("idCounter")) || 1,
   );
   const [selectedMemo, setSelectedMemo] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("memos", JSON.stringify(memos));
   }, [memos]);
 
   const handleNewMemo = () => {
-    const newMemo = {
-      id: idCounter,
-      text: "新規メモ",
-    };
+    if (isLoggedIn) {
+      const newMemo = {
+        id: idCounter,
+        text: "新規メモ",
+      };
 
-    setMemos([...memos, newMemo]);
-    setIdCounter(idCounter + 1);
-    setSelectedMemo(newMemo);
+      setMemos([...memos, newMemo]);
+      setIdCounter(idCounter + 1);
+      setSelectedMemo(newMemo);
+    }
   };
 
   const handleEditMemo = (editId, newText) => {
-    const updatedMemos = memos.map((memo) =>
-      memo.id === editId ? { ...memo, text: newText } : memo,
-    );
+    if (isLoggedIn) {
+      const updatedMemos = memos.map((memo) =>
+        memo.id === editId ? { ...memo, text: newText } : memo,
+      );
 
-    setMemos(updatedMemos);
-    setSelectedMemo(null);
+      setMemos(updatedMemos);
+      setSelectedMemo(null);
+    }
   };
 
   const handleRemoveMemo = (removeId) => {
-    const updatedMemos = memos.filter((memo) => memo.id !== removeId);
-    setMemos(updatedMemos);
-    setSelectedMemo(null);
+    if (isLoggedIn) {
+      const updatedMemos = memos.filter((memo) => memo.id !== removeId);
+      setMemos(updatedMemos);
+      setSelectedMemo(null);
+    }
   };
 
   const handleMemoListClick = (clickedMemo) => {
     setSelectedMemo(clickedMemo);
   };
 
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
   return (
     <div className="app-container">
       <div className="header">
         <h2>Memo App</h2>
+        {isLoggedIn ? (
+          <button onClick={handleLogout} className="login-button">
+            ログアウト
+          </button>
+        ) : (
+          <button onClick={handleLogin} className="login-button">
+            ログイン
+          </button>
+        )}
       </div>
       <div className="main-container">
         <div className="memo-list-container">
           <MemoList memos={memos} onEdit={handleMemoListClick} />
-          <button onClick={handleNewMemo} className="add-button">
-            +
-          </button>
+          {isLoggedIn && (
+            <button onClick={handleNewMemo} className="add-button">
+              +
+            </button>
+          )}
         </div>
         <div>
           {selectedMemo && (
