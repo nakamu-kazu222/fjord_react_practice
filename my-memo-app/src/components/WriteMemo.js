@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useAuth } from "../App";
 
 const WriteMemo = ({ selectedMemo, onAdd, onEdit, onRemove }) => {
+  const { isLoggedIn } = useAuth();
+
   const [text, setText] = useState(selectedMemo?.text || "");
 
   const handleWrite = () => {
@@ -21,13 +24,14 @@ const WriteMemo = ({ selectedMemo, onAdd, onEdit, onRemove }) => {
         onChange={(e) => setText(e.target.value)}
         placeholder="Write memo"
         className="memo-textarea"
+        readOnly={!isLoggedIn}
       />
-      {selectedMemo && (
+      {selectedMemo && isLoggedIn && (
         <button onClick={handleWrite} className="memo-button">
           保存
         </button>
       )}
-      {selectedMemo && (
+      {selectedMemo && isLoggedIn && (
         <button onClick={handleRemove} className="memo-button">
           削除
         </button>
